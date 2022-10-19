@@ -9,5 +9,5 @@ This plugin provides the following events: user login
 ## Oneliner to create installable plugin from the repo directory
 
 ```
-zip -r lianaautomation-login-version.zip lianaautomation-login -x "lianaautomation-login/.git*"
+zip -r lianaautomation-login.zip lianaautomation-login -x "lianaautomation-login/.*"
 ```
