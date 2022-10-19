@@ -77,7 +77,7 @@ class LianaAutomation_Login {
 	 *
 	 * @return void
 	 */
-	public function lianaAutomationLoginCreateAdminPage():void {
+	public function lianaautomation_login_create_admin_page():void {
 		$this->lianaautomation_login_options = get_option( 'lianaautomation_login_options' ); ?>
 		<div class="wrap">
 			<h2>LianaAutomation API Options for Login Tracking</h2>
@@ -230,7 +230,7 @@ class LianaAutomation_Login {
 	 *
 	 * @return void
 	 */
-	public function lianaAutomationLoginRealmCallback():void {
+	public function lianaautomation_login_realm_callback():void {
 		printf(
 			'<input class="regular-text" type="text" '
 			. 'name="lianaautomation_login_options[lianaautomation_realm]" '
@@ -243,17 +243,15 @@ class LianaAutomation_Login {
 	/**
 	 * Automation User
 	 *
-	 * @return null
+	 * @return void
 	 */
-	public function lianaAutomationLoginUserCallback() {
+	public function lianaautomation_login_user_callback():void {
 		printf(
 			'<input class="regular-text" type="text" '
 			. 'name="lianaautomation_login_options[lianaautomation_user]" '
 			. 'id="lianaautomation_user" value="%s">',
 			isset( $this->lianaautomation_login_options['lianaautomation_user'] )
-				? esc_attr(
-					$this->lianaautomation_login_options['lianaautomation_user']
-				)
+				? esc_attr( $this->lianaautomation_login_options['lianaautomation_user'] )
 				: ''
 		);
 	}
@@ -261,17 +259,15 @@ class LianaAutomation_Login {
 	/**
 	 * Automation Key
 	 *
-	 * @return null
+	 * @return void
 	 */
-	public function lianaAutomationLoginKeyCallback() {
+	public function lianaautomation_login_key_callback():void {
 		printf(
 			'<input class="regular-text" type="text" '
 			. 'name="lianaautomation_login_options[lianaautomation_key]" '
 			. 'id="lianaautomation_key" value="%s">',
 			isset( $this->lianaautomation_login_options['lianaautomation_key'] )
-				? esc_attr(
-					$this->lianaautomation_login_options['lianaautomation_key']
-				)
+				? esc_attr( $this->lianaautomation_login_options['lianaautomation_key'] )
 				: ''
 		);
 	}
@@ -279,17 +275,15 @@ class LianaAutomation_Login {
 	/**
 	 * Automation Channel
 	 *
-	 * @return null
+	 * @return void
 	 */
-	public function lianaAutomationLoginChannelCallback() {
+	public function lianaautomation_login_channel_callback():void {
 		printf(
 			'<input class="regular-text" type="text" '
 			. 'name="lianaautomation_login_options[lianaautomation_channel]" '
 			. 'id="lianaautomation_channel" value="%s">',
 			isset( $this->lianaautomation_login_options['lianaautomation_channel'] )
-				? esc_attr(
-					$this->lianaautomation_login_options['lianaautomation_channel']
-				)
+				? esc_attr( $this->lianaautomation_login_options['lianaautomation_channel'] )
 				: ''
 		);
 	}
@@ -297,87 +291,83 @@ class LianaAutomation_Login {
 	/**
 	 * LianaAutomation API Status check
 	 *
-	 * @return null
+	 * @return string
 	 */
-	public function lianaAutomationLoginConnectionCheckCallback() {
+	public function lianaautomation_login_connection_check_callback() {
 
 		$return = '💥Fail';
-        // phpcs:ignore Generic.Files.LineLength.TooLong
 		if ( empty( $this->lianaautomation_login_options['lianaautomation_user'] ) ) {
-			echo $return;
+			echo wp_kses_post( $return );
 			return null;
 		}
 		$user
 			= $this->lianaautomation_login_options['lianaautomation_user'];
 
-        // phpcs:ignore Generic.Files.LineLength.TooLong
 		if ( empty( $this->lianaautomation_login_options['lianaautomation_key'] ) ) {
-			echo $return;
+			echo wp_kses_post( $return );
 			return null;
 		}
 		$secret
 			= $this->lianaautomation_login_options['lianaautomation_key'];
 
-        // phpcs:ignore Generic.Files.LineLength.TooLong
 		if ( empty( $this->lianaautomation_login_options['lianaautomation_realm'] ) ) {
-			echo $return;
+			echo wp_kses_post( $return );
 			return null;
 		}
 		$realm
 			= $this->lianaautomation_login_options['lianaautomation_realm'];
 
-        // phpcs:ignore Generic.Files.LineLength.TooLong
 		if ( empty( $this->lianaautomation_login_options['lianaautomation_url'] ) ) {
-			echo $return;
+			echo wp_kses_post( $return );
 			return null;
 		}
 		$url
 			= $this->lianaautomation_login_options['lianaautomation_url'];
 
-        // phpcs:ignore Generic.Files.LineLength.TooLong
 		if ( empty( $this->lianaautomation_login_options['lianaautomation_channel'] ) ) {
-			echo $return;
+			echo wp_kses_post( $return );
 			return null;
 		}
 		$channel
 			= $this->lianaautomation_login_options['lianaautomation_channel'];
 
 		/**
-		* General variables
-		*/
-		$basePath    = 'rest';             // Base path of the api end points
-		$contentType = 'application/json'; // Content will be send as json
-		$method      = 'POST';             // Method is always POST
+		 * General variables
+		 */
+		$base_path    = 'rest';             // Base path of the api end points.
+		$content_type = 'application/json'; // Content will be send as json.
+		$method       = 'POST';             // Method is always POST!
 
-		// Import Data
+		// Import Data!
 		$path = 'v1/pingpong';
 		$data = array(
 			'ping' => 'pong',
 		);
 
-		// Encode our body content data
-		$data = json_encode( $data );
-		// Get the current datetime in ISO 8601
-		$date = date( 'c' );
-		// md5 hash our body content
-		$contentMd5 = md5( $data );
-		// Create our signature
-		$signatureContent = implode(
+		// Encode our body content data.
+		$data = wp_json_encode( $data );
+		// Get the current datetime in ISO 8601.
+		$date = gmdate( 'c' );
+		// md5 hash our body content.
+		$content_md5 = md5( $data );
+		// Create our signature!
+		$signature_content = implode(
 			"\n",
 			array(
 				$method,
-				$contentMd5,
-				$contentType,
+				$content_md5,
+				$content_type,
 				$date,
 				$data,
-				"/{$basePath}/{$path}",
+				"/{$base_path}/{$path}",
 			),
 		);
-		$signature        = hash_hmac( 'sha256', $signatureContent, $secret );
-		// Create the authorization header value
+
+		$signature = hash_hmac( 'sha256', $signature_content, $secret );
+		// Create the authorization header value.
 		$auth = "{$realm} {$user}:" . $signature;
 
-		// Create our full stream context with all required headers
+		// Create our full stream context with all required headers.
 		$ctx = stream_context_create(
 			array(
 				'http' => array(
@@ -387,8 +377,8 @@ class LianaAutomation_Login {
 						array(
 							"Authorization: {$auth}",
 							"Date: {$date}",
-							"Content-md5: {$contentMd5}",
-							"Content-Type: {$contentType}",
+							"Content-md5: {$content_md5}",
+							"Content-Type: {$content_type}",
 						)
 					),
 					'content' => $data,
@@ -396,13 +386,14 @@ class LianaAutomation_Login {
 			)
 		);
 
-		// Build full path, open a data stream, and decode the json response
-		$fullPath = "{$url}/{$basePath}/{$path}";
-		$fp       = fopen( $fullPath, 'rb', false, $ctx );
+		// Build full path, open a data stream, and decode the json response.
+		$full_path = "{$url}/{$base_path}/{$path}";
+
+		$fp = fopen( $full_path, 'rb', false, $ctx );
 
 		if ( ! $fp ) {
-			// API failed to connect
-			echo $return;
+			// API failed to connect!
+			echo wp_kses_post( $return );
 			return null;
 		}
 
@@ -410,16 +401,20 @@ class LianaAutomation_Login {
 		$response = json_decode( $response, true );
 
 		if ( ! empty( $response ) ) {
-			// error_log(print_r($response, true));
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) {
+				// phpcs:disable WordPress.PHP.DevelopmentFunctions
+				error_log( print_r( $response, true ) );
+				// phpcs:enable
+			}
 			if ( ! empty( $response['pong'] ) ) {
 				$return = '💚 OK';
 			}
 		}
 
-		echo $return;
+		echo wp_kses_post( $return );
 	}
 
 }
 if ( is_admin() ) {
-	$lianaAutomationLogin = new LianaAutomationLogin();
+	$lianaautomation_login = new LianaAutomation_Login();
 }
