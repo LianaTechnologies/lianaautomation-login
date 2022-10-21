@@ -25,11 +25,11 @@ class LianaAutomation_Login {
 	public function __construct() {
 		add_action(
 			'admin_menu',
-			array( $this, 'lianaAutomationLoginAddPluginPage' )
+			array( $this, 'lianaautomation_login_add_plugin_page' )
 		);
 		add_action(
 			'admin_init',
-			array( $this, 'lianaAutomationLoginPageInit' )
+			array( $this, 'lianaautomation_login_page_init' )
 		);
 	}
 
