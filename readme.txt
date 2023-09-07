@@ -2,7 +2,7 @@
 Contributors: lianatechnologies, jaakkoperoliana, timopohjanvirtaliana
 Tags: automation, online store, ecommerce, e-commerce
 Requires at least: 5.8
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 1.0.4
 License: GPL-3.0-or-later
@@ -10,17 +10,21 @@ License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 == Description ==
 
-LianaAutomation Login Tracking is an integration plugin for a LianaAutomation marketing automation platform.
+LianaAutomation Login Tracking is an integration plugin for a LianaAutomation marketing automation platform. It enables you to identify website visitors based on their login information and track their previous and future page browsing events.
 
 = Create Automations for your WordPress site visitors =
 
-Liana Automation allows you to segment your WordPress site visitors and create marketing automations based on those segments.
+LianaAutomation allows you to collect data from your WordPress site, create segments based on the data, and create marketing automations based on those segments. Use LianaAutomation Login to recognize logged-in users and their actions, and send automated messages based on them.
 With this tool, you can grow your business and create effective automations for many purposes, like retargeting, additional sales, or brand awareness.
 Implement rightly timed marketing actions based on the customer data you possess.
 
 = Contribute and translate =
 
-LianaAutomation is developed and supported by Liana Technologies Oy. Join our crew at GitHub or contact using other means.
+LianaAutomation is developed and supported by Liana Technologies Oy. Join our crew at GitHub or contact us using other means.
+
+== Screenshots ==
+
+1. Login event in LianaAutomation
 
 == Frequently Asked Questions ==
 
