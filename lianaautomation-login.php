@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       LianaAutomation Login
  * Description:       LianaAutomation Login Tracking for WordPress
- * Version:           1.0.4
+ * Version:           1.0.5
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Liana Technologies Oy
